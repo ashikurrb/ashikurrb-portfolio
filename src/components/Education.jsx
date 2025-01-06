@@ -7,17 +7,12 @@ const EducationSection = () => {
 
   const educationData = [
     {
-      degree: "Secondary School Certificate (SSC)",
-      school: "Natore Textile Institute",
-      mascot: "📘",
-      achievements: ["GPA: 4.89", "Subject: Science"],
-    },
-    {
-      degree: "Higher Secondary Certificate (HSC)",
-      school: "Dottopara Model Degree College",
-      mascot: "📗",
-      achievements: ["GPA: 4.25", "Subject: Arts"],
-    },
+      degree: "BBA in Tourism and Hospitaltiy Management",
+      school: "Mohammadpur Kendriya College",
+      year: "2020 - Present",
+      mascot: "🎓",
+      achievements: [ ""],
+    }
   ];
 
   return (
@@ -45,7 +40,7 @@ const EducationSection = () => {
                 </div>
 
                 <div className="mb-2 text-emerald-500 text-sm font-medium tracking-wide">
-                  FEATURED EDUCATION
+                   EDUCATION
                 </div>
 
                 {/* Top section */}

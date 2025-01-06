@@ -1,6 +1,6 @@
 import React from "react";
 import { Github, ExternalLink } from "lucide-react";
-import olova from "../assets/images/olova.png";
+import studentportal from "../assets/images/student-portal-dashboard.png";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const MacOsButtons = () => (
@@ -14,15 +14,23 @@ const MacOsButtons = () => (
 const ProjectShowcase = () => {
   const projects = [
     {
-      title: "Olova! A Lightweight JavaScript Library",
+      title: "Student Management Portal",
       description:
-        "Olova.js is a lightweight JavaScript library for building modern, reactive, and dynamic web applications. It features a simple, component-based architecture, enabling developers to create reusable and interactive UI elements with minimal code and overhead.",
-      tags: ["JavaScript", "Reactive", "Web Development"],
+        "I build this web application for 5points Academy to manage their students, classes, and instructors. It has a user-friendly interface and a powerful admin panel",
+      tags: [
+        "JavaScript",
+        "React",
+        "Bootstrap",
+        "Node.js",
+        "ExpressJS",
+        "MongoDB",
+      ],
       links: {
-        github: "https://github.com/olovajs/olova",
-        demo: "https://olova.js.org/",
+        github: "https://github.com/ashikurrb/student-portal",
+        live: "https://www.5points-academy.com/",
+        demo: "https://5points-academy.netlify.app/",
       },
-      image: olova,
+      image: studentportal,
       featured: true,
     },
   ];
@@ -43,7 +51,6 @@ const ProjectShowcase = () => {
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
             </div>
-
             {/* Text Section */}
             <Card className="md:w-1/2 bg-gradient-to-br from-slate-800 to-gray-900 rounded-lg overflow-hidden shadow-md transition-transform duration-500 group-hover:scale-105 group-hover:shadow-2xl p-6">
               <MacOsButtons />
@@ -52,7 +59,7 @@ const ProjectShowcase = () => {
                 <div className="flex justify-between items-start">
                   <div>
                     <div className="text-emerald-400 text-sm font-mono mb-2 tracking-wide uppercase">
-                      Featured Project
+                      My Project
                     </div>
                     <CardTitle className="text-slate-100 text-3xl font-bold">
                       {project.title}
@@ -68,7 +75,7 @@ const ProjectShowcase = () => {
                       <Github size={22} />
                     </a>
                     <a
-                      href={project.links.demo}
+                      href={project.links.live}
                       className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -78,7 +85,13 @@ const ProjectShowcase = () => {
                   </div>
                 </div>
               </CardHeader>
-
+              <a
+                  className="ml-6 text-slate-300 mb-6 text-lg leading-relaxed underline"
+                  target="_blank"
+                  href={project.links.demo}
+                >
+                  Click for Demo | Demo Credentials: 01853660115:123456
+                </a>
               <CardContent className="mt-4">
                 <p className="text-slate-300 mb-6 text-lg leading-relaxed">
                   {project.description}
