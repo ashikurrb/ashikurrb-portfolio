@@ -39,7 +39,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-auto">
+    <header className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 w-auto">
       <div className="p-[2px] rounded-full bg-gradient-to-r from-emerald-400 via-cyan-500 to-indigo-500 animate-gradient-x">
         <nav className="bg-gray-900/90 backdrop-blur-md rounded-full px-6 py-2.5">
           <div className="flex items-center gap-1 md:gap-2">
