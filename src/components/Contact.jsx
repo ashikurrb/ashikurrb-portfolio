@@ -90,7 +90,7 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <div className="backdrop-blur-lg bg-white/5 py-8 pl-8 pr-8 pt-5 rounded-2xl shadow-xl mb-20 lg:mt-20">
+            <div className="backdrop-blur-lg bg-white/5 py-8 pl-8 pr-8 pt-5 rounded-2xl shadow-xl mb-10 lg:mt-20">
               <h2 className="text-4xl text-center font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                 leave a Message
               </h2>
