@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Send, Phone, MapPin, Mail } from "lucide-react";
+import { Send, MapPin, Mail } from "lucide-react";
+import { SiNotion } from "react-icons/si";
+import { FaXTwitter, FaLinkedin, FaFacebook, FaGithub } from "react-icons/fa6";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -48,6 +50,35 @@ export default function Contact() {
     }
   };
 
+  const socialProfile = [
+    {
+      appName: "Notion",
+      icon: <SiNotion />,
+      link: "https://ashikurrb.notion.site",
+    },
+    {
+      appName: "Facebook",
+      icon: <FaFacebook />,
+      link: "https://www.facebook.com/ashikurrb.ashik",
+    },
+    {
+      appName: "X",
+      icon: <FaXTwitter />,
+      link: "https://www.x.com/ashikurrb",
+    },
+    {
+      appName: "LinkedIn",
+      icon: <FaLinkedin />,
+      link: "https://www.linkedin.com/in/ashikurrb",
+    },
+
+    {
+      appName: "GitHub",
+      icon: <FaGithub />,
+      link: "https://www.github.com/ashikurrb",
+    },
+  ];
+
   return (
     <main className="pt-20 lg:pt-[0rem] bg-[#0f1629] text-white min-h-screen">
       <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
@@ -85,6 +116,15 @@ export default function Contact() {
                       Dhaka Housing, Adabor, Mohammadpur, Dhaka-1207
                     </p>
                   </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  {socialProfile.map((profile, index) => (
+                    <div key={index} className="bg-pink-500/10 p-3 rounded-lg">
+                      <a href={profile.link} target="_blank">
+                        {profile.icon}
+                      </a>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
