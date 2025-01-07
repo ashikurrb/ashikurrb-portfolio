@@ -48,7 +48,7 @@ const AboutMe = () => {
           </h2>
           <div className="flex items-center space-x-4">
             {socialProfile.map((profile, index) => (
-              <div key={index} className="bg-pink-500/10 p-3 rounded-lg">
+              <div key={index} className="bg-pink-500/10 p-3 rounded-lg hover:bg-pink-500/20">
                 <a href={profile.link} target="_blank">
                   {profile.icon}
                 </a>

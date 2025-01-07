@@ -7,6 +7,7 @@ import PortfolioPage from "./PortfolioPage";
 import SparklesText from "./ui/sparkles-text";
 import { FlipWords } from "./ui/flip-words";
 import { FaGithub, FaGoogleDrive } from "react-icons/fa";
+import { SiNotion } from "react-icons/si";
 
 // AnimatedGrid Component
 const AnimatedGrid = () => {
@@ -50,10 +51,9 @@ const AnimatedGrid = () => {
 
 export default function Hero() {
   const words = [
-    "Full-Stack Developer & UI/UX Enthusiast",
-    "JavaScript Developer & Creator of Olova.js",
-    "Learning MARN Stack",
-    "Linux & GitHub for DevOps Enthusiast",
+    "Full-Stack Developer",
+    "MERN Stack Developer",
+    "Notion Enthusiast",
   ];
 
   const [code] = useState(`
