@@ -57,28 +57,18 @@ export default function Hero() {
   ];
 
   const [code] = useState(`
-const profile = {
-    name: 'Ashikur Rahman Bhuiyan',
-    title: 'Full-Stack Developer | Cloud Enthusiast | Problem Solver',
-    skills: [
-        'React', 'NextJS', 'Redux', 'Express',
-         'MongoDB', 'Docker', 'AWS', 'TypeScript',
-        'GraphQL', 'Git', 'Linux', 'Discord Development'
-    ],
-    hardWorker: true,
-    quickLearner: true,
-    problemSolver: true,
-    yearsOfExperience: 4, 
-    hireable: function() {
-        return (
-            this.hardWorker &&
-            this.problemSolver &&
-            this.skills.length >= 5 &&
-            this.yearsOfExperience >= 3
-        );
-    }
-};
-  `);
+    const profile = {
+        name: 'Ashikur Rahman Bhuiyan',
+        title: 'Full-Stack Developer | Notion Enthusiast',
+        skills: {
+            frontEnd: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React.js', 'Next.js', 'Tailwind CSS'],
+            backEnd: ['Node.js', 'Express.js', 'MongoDB', 'Redis', 'Firebase', 'RESTful APIs'],
+            tools: ['Git', 'GitHub', 'Linux', 'Docker', 'Figma', 'Notion', 'Slack'],
+        },
+        hardWorker: true,
+        quickLearner: true,
+    };
+    `);
 
   useEffect(() => {
     Prism.highlightAll();
@@ -155,8 +145,7 @@ const profile = {
                   <span className="block w-full px-6 sm:px-8 py-3 sm:py-4 rounded-[11px] bg-gray-900 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-teal-400">
                     <span className="relative flex items-center justify-center gap-2 text-white font-medium">
                       <span className="flex items-center justify-center space-x-2">
-                        <FaGithub /> &nbsp;
-                        GitHub
+                        <FaGithub /> &nbsp; GitHub
                       </span>
                       <i className="fas fa-arrow-right transform transition-all duration-300 group-hover:translate-x-1"></i>
                     </span>
@@ -171,10 +160,9 @@ const profile = {
                 >
                   <span className="block w-full px-6 sm:px-8 py-3 sm:py-4 rounded-[11px] bg-gray-900 border border-gray-700/50 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-gray-800 group-hover:to-gray-700">
                     <span className="relative flex items-center justify-center gap-2 text-gray-300 font-medium group-hover:text-white">
-                    <span className="flex items-center justify-center space-x-2">
-                    <FaGoogleDrive /> &nbsp;
-                        View Resume
-                        </span>
+                      <span className="flex items-center justify-center space-x-2">
+                        <FaGoogleDrive /> &nbsp; View Resume
+                      </span>
                       <i className="fas fa-envelope transform transition-all duration-300 group-hover:rotate-12"></i>
                     </span>
                   </span>
@@ -201,7 +189,7 @@ const profile = {
             </div>
 
             {/* Right column - Code window */}
-            <div className="w-full lg:w-1/2 animate__animated animate__fadeInDown animate__delay-0.1s">
+            <div className="w-full lg:w-1/2 lg:mt-20 animate__animated animate__fadeInDown animate__delay-0.1s">
               <div className="gradient-border">
                 <div className="code-window bg-[#091121]">
                   <div className="window-header">
@@ -213,8 +201,10 @@ const profile = {
                       developer.js
                     </span>
                   </div>
-                  <pre className="language-javascript">
-                    <code className="language-javascript">{code}</code>
+                  <pre className="language-javascript overflow-auto break-words">
+                    <code className="language-javascript text-wrap">
+                      {code}
+                    </code>
                   </pre>
                 </div>
               </div>

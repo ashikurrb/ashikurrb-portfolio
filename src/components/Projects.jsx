@@ -37,7 +37,7 @@ const ProjectShowcase = () => {
 
   return (
     <div className="pt-40 min-h-screen bg-[#0f1629] p-8 text-slate-100">
-      <div className="max-w-7xl mx-auto space-y-12">
+      <div className="max-w-7xl mx-auto space-y-12 mb-20">
         {projects.map((project, index) => (
           <div
             key={index}

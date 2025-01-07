@@ -41,7 +41,7 @@ export default function Header() {
   return (
     <header
       className="fixed w-auto z-50 left-1/2 transform -translate-x-1/2 
-                   sm:top-3 sm:bottom-auto bottom-4"
+                   sm:top-3 sm:bottom-auto bottom-4 mt-4"
     >
       {" "}
       <div className="p-[2px] rounded-full bg-gradient-to-r from-emerald-400 via-cyan-500 to-indigo-500 animate-gradient-x">

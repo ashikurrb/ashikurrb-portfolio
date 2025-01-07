@@ -90,11 +90,15 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <div className="backdrop-blur-lg bg-white/5 p-8 rounded-2xl shadow-xl">
+            <div className="backdrop-blur-lg bg-white/5 py-8 pl-8 pr-8 pt-5 rounded-2xl shadow-xl mb-20 lg:mt-20">
+              <h2 className="text-4xl text-center font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                leave a Message
+              </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-6">
                   <div>
                     <input
+                      required
                       type="text"
                       placeholder="Your Name"
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-500 focus:outline-none transition-colors"
@@ -107,6 +111,7 @@ export default function Contact() {
 
                   <div>
                     <input
+                      required
                       type="email"
                       placeholder="Your Email"
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-500 focus:outline-none transition-colors"
@@ -119,6 +124,7 @@ export default function Contact() {
 
                   <div>
                     <input
+                      required
                       type="text"
                       placeholder="Subject"
                       className="w-full px-4 py-3 rounded-lg bg-white/5 border border-gray-700 focus:border-blue-500 focus:outline-none transition-colors"
