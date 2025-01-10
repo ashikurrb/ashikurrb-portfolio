@@ -7,7 +7,7 @@ const socialProfile = [
   {
     appName: "Notion",
     icon: <SiNotion />,
-    link: "https://ashikurrb.notion.site",
+    link: "https://ashikurrb.notion.site/portfolio",
   },
   {
     appName: "Facebook",

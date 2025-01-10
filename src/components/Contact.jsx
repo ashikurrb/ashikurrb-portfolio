@@ -54,7 +54,7 @@ export default function Contact() {
     {
       appName: "Notion",
       icon: <SiNotion />,
-      link: "https://ashikurrb.notion.site",
+      link: "https://ashikurrb.notion.site/portfolio",
     },
     {
       appName: "Facebook",
