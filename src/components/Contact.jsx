@@ -44,9 +44,18 @@ export default function Contact() {
       } else {
         setStatus(result.message || "There was an error sending your message.");
       }
+
+      // Hide status message after 10 seconds
+      setTimeout(() => {
+        setStatus(null);
+      }, 5000); // 10 seconds
     } catch (error) {
       setStatus("An error occurred. Please try again.");
       console.error("Error:", error);
+      // Hide error message after 10 seconds
+      setTimeout(() => {
+        setStatus(null);
+      }, 10000); // 10 seconds
     }
   };
 
@@ -102,7 +111,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-400">{import.meta.env.VITE_APP_EMAIL_ADDRESS}</p>
+                    <p className="text-gray-400">
+                      {import.meta.env.VITE_APP_EMAIL_ADDRESS}
+                    </p>
                   </div>
                 </div>
 
@@ -134,9 +145,15 @@ export default function Contact() {
 
             {/* Contact Form */}
             <div className="backdrop-blur-lg bg-white/5 py-8 pl-8 pr-8 pt-5 rounded-2xl shadow-xl mb-10 lg:mt-20">
-              <h2 className="text-4xl text-center font-bold pt-2 pb-4 mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+              <h2 className="text-4xl text-center font-bold pt-2 pb-3 mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                 Send Message
               </h2>
+              {/* Status Message */}
+              {status && (
+                <div className="pb-9 text-center text-gray-300">
+                  <p>{status}</p>
+                </div>
+              )}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-6">
                   <div>
@@ -201,13 +218,6 @@ export default function Contact() {
                   </button>
                 </div>
               </form>
-
-              {/* Status Message */}
-              {status && (
-                <div className="mt-4 text-center text-gray-300">
-                  <p>{status}</p>
-                </div>
-              )}
             </div>
           </div>
         </div>
