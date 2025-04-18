@@ -11,15 +11,33 @@ const EducationSection = () => {
       school: "Mohammadpur Kendriya College",
       year: "2020 - Present",
       mascot: "🎓",
-      achievements: [ ""],
-    }
+      type: "Bachelor Degree",
+      achievements: [""],
+    },
+    {
+      degree: "SSC in Science",
+      school: "Feni Govt. Pilot High School",
+      year: "2010 - 2015",
+      mascot: "🎓",
+      type: "Secondary School",
+      achievements: ["GPA 5.00"],
+    },
   ];
 
   return (
-    <section className="min-h-screen bg-[#0f1629] text-slate-100 p-8 md:py-0">
-       <h2 className="text-4xl text-center font-bold lg:pt-40 pt-20 pb-20 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-          EDUCATION
-        </h2>
+    <section className="min-h-screen bg-[#0f1629] text-slate-100 py-8 md:py-0">
+      <div className="flex flex-col items-center space-y-6 pt-20 pb-20">
+        <div className="relative">
+          <h2 className="text-4xl text-center md:text-6xl font-extrabold text-transparent bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-500 bg-clip-text lg:pt-10">
+          Academic Background
+          </h2>
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-400/30 to-indigo-400/30 blur-xl rounded-xl" />
+        </div>
+        <p className="text-sm md:text-lg text-gray-400 font-medium italic tracking-wide">
+        "From ABCs to APIs...."
+        </p>
+        <div className="animate-pulse mt-4 w-6 h-6 border-4 border-dashed border-cyan-400 rounded-full" />
+      </div>
       <div className="max-w-5xl mx-auto px-4">
         <div className="space-y-8">
           {educationData.map((edu, index) => (
@@ -42,8 +60,8 @@ const EducationSection = () => {
                   <button className="w-2.5 h-2.5 bg-green-500 rounded-full transition-all hover:bg-green-600" />
                 </div>
 
-                <div className="mb-2 text-emerald-500 text-sm font-medium tracking-wide">
-                   EDUCATION
+                <div className="py-3 text-emerald-500 text-sm font-medium tracking-wide">
+                  {edu.type}
                 </div>
 
                 {/* Top section */}

@@ -75,7 +75,7 @@ const ExperienceSection = () => {
           {/* Section header with cyber effect */}
           <div className="flex flex-col items-center space-y-6 mb-16">
             <div className="relative">
-              <h2 className="text-4xl md:text-6xl font-extrabold text-transparent bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-500 bg-clip-text lg:pt-20">
+              <h2 className="text-4xl md:text-6xl font-extrabold text-transparent bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-500 bg-clip-text lg:pt-10">
                 Professional Journey
               </h2>
               <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-400/30 to-indigo-400/30 blur-xl rounded-xl" />

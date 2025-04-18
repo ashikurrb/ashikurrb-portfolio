@@ -37,9 +37,18 @@ const ProjectShowcase = () => {
 
   return (
     <div className="min-h-screen bg-[#0f1629] text-slate-100 p-8 md:py-0">
-      <h2 className="text-4xl text-center font-bold lg:pt-40 pb-20 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-        PROJECTS
-      </h2>
+      <div className="flex flex-col items-center space-y-6 pt-20 pb-20">
+        <div className="relative">
+          <h2 className="text-4xl text-center md:text-6xl font-extrabold text-transparent bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-500 bg-clip-text lg:pt-10">
+            From Brain to Code
+          </h2>
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-400/30 to-indigo-400/30 blur-xl rounded-xl" />
+        </div>
+        <p className="text-sm md:text-lg text-gray-400 font-medium italic tracking-wide">
+          "Things I’ve Built..."
+        </p>
+        <div className="animate-pulse mt-4 w-6 h-6 border-4 border-dashed border-cyan-400 rounded-full" />
+      </div>
       <div className="max-w-7xl mx-auto space-y-12 mb-20">
         {projects.map((project, index) => (
           <div

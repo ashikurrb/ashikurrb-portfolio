@@ -90,7 +90,7 @@ export default function Contact() {
 
   return (
     <main className="bg-[#0f1629] text-white min-h-screen">
-      <h2 className="text-5xl text-center font-bold pt-10 md:pt-40 lg:pt-40 pb-10 md:pb-0 sm:pb-0 lg:pb-0 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+      <h2 className="pt-10 md:pt-40 lg:pt-40 pb-10 md:pb-0 sm:pb-0 lg:pb-0text-center text-5xl text-center md:text-6xl font-extrabold text-transparent bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-500 bg-clip-text">
         Get in Touch
       </h2>
       <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
