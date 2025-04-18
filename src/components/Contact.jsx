@@ -48,7 +48,7 @@ export default function Contact() {
       // Hide status message after 10 seconds
       setTimeout(() => {
         setStatus(null);
-      }, 5000); // 10 seconds
+      }, 5000); // 5 seconds
     } catch (error) {
       setStatus("An error occurred. Please try again.");
       console.error("Error:", error);
