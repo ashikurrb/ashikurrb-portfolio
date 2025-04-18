@@ -102,7 +102,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-400">ashikurrb85@gmail.com</p>
+                    <p className="text-gray-400">s19510007055@nu.ac.bd</p>
                   </div>
                 </div>
 
@@ -119,7 +119,10 @@ export default function Contact() {
                 </div>
                 <div className="flex items-center space-x-4">
                   {socialProfile.map((profile, index) => (
-                    <div key={index} className="bg-pink-500/10 p-3 rounded-lg hover:bg-pink-500/20">
+                    <div
+                      key={index}
+                      className="bg-pink-500/10 p-3 rounded-lg hover:bg-pink-500/20"
+                    >
                       <a href={profile.link} target="_blank">
                         {profile.icon}
                       </a>
@@ -131,8 +134,8 @@ export default function Contact() {
 
             {/* Contact Form */}
             <div className="backdrop-blur-lg bg-white/5 py-8 pl-8 pr-8 pt-5 rounded-2xl shadow-xl mb-10 lg:mt-20">
-              <h2 className="text-4xl text-center font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                leave a Message
+              <h2 className="text-4xl text-center font-bold pt-2 pb-4 mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                Send Message
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-6">
@@ -188,13 +191,15 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity"
-                >
-                  <span>Send Message</span>
-                  <Send className="w-4 h-4" />
-                </button>
+                <div className="flex justify-center pt-4">
+                  <button
+                    type="submit"
+                    className="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity"
+                  >
+                    <span>Send Message</span>
+                    <Send className="w-4 h-4" />
+                  </button>
+                </div>
               </form>
 
               {/* Status Message */}

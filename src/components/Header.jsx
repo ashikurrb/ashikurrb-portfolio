@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   FaHome,
   FaLaptopCode,
-  FaUser,
   FaBriefcase,
   FaGraduationCap,
   FaCode,
@@ -39,10 +38,7 @@ export default function Header() {
   ];
 
   return (
-    <header
-      className="fixed w-auto z-50 left-1/2 transform -translate-x-1/2 
-                   sm:top-3 sm:bottom-auto bottom-4 mt-4"
-    >
+    <header className="fixed w-auto z-50 left-1/2 transform -translate-x-1/2 sm:top-3 sm:bottom-auto bottom-4 mt-4">
       {" "}
       <div className="p-[2px] rounded-full bg-gradient-to-r from-emerald-400 via-cyan-500 to-indigo-500 animate-gradient-x">
         <nav className="bg-gray-900/90 backdrop-blur-md rounded-full px-6 py-2.5">
