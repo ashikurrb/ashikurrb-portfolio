@@ -36,7 +36,10 @@ const ProjectShowcase = () => {
   ];
 
   return (
-    <div className="pt-40 min-h-screen bg-[#0f1629] p-8 text-slate-100">
+    <div className="min-h-screen bg-[#0f1629] text-slate-100 p-8 md:py-0">
+      <h2 className="text-4xl text-center font-bold lg:pt-40 pb-20 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+        PROJECTS
+      </h2>
       <div className="max-w-7xl mx-auto space-y-12 mb-20">
         {projects.map((project, index) => (
           <div
@@ -86,12 +89,12 @@ const ProjectShowcase = () => {
                 </div>
               </CardHeader>
               <a
-                  className="ml-6 text-slate-300 mb-6 text-lg leading-relaxed underline"
-                  target="_blank"
-                  href={project.links.demo}
-                >
-                  Click for Demo | Demo Credentials: 01853660115:123456
-                </a>
+                className="ml-6 text-slate-300 mb-6 text-lg leading-relaxed underline"
+                target="_blank"
+                href={project.links.demo}
+              >
+                Click for Demo | Demo Credentials: 01853660115:123456
+              </a>
               <CardContent className="mt-4">
                 <p className="text-slate-300 mb-6 text-lg leading-relaxed">
                   {project.description}

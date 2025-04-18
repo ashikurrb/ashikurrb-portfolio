@@ -16,7 +16,10 @@ const EducationSection = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-[#0f1629] py-40">
+    <section className="min-h-screen bg-[#0f1629] text-slate-100 p-8 md:py-0">
+       <h2 className="text-4xl text-center font-bold lg:pt-40 pt-20 pb-20 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          EDUCATION
+        </h2>
       <div className="max-w-5xl mx-auto px-4">
         <div className="space-y-8">
           {educationData.map((edu, index) => (

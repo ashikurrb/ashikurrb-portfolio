@@ -89,21 +89,20 @@ export default function Contact() {
   ];
 
   return (
-    <main className="pt-20 lg:pt-[0rem] bg-[#0f1629] text-white min-h-screen">
+    <main className="bg-[#0f1629] text-white min-h-screen">
+      <h2 className="text-5xl text-center font-bold pt-10 md:pt-40 lg:pt-40 pb-10 md:pb-0 sm:pb-0 lg:pb-0 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+        Get in Touch
+      </h2>
       <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Contact Info */}
-            <div className="space-y-8">
+            <div className="space-y-8 lg:pb-20 px-4 lg:px-0">
               <div>
-                <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  Get in Touch
-                </h2>
                 <p className="text-gray-300 text-lg">
                   Have a question or want to work together? Drop us a message!
                 </p>
               </div>
-
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
                   <div className="bg-purple-500/10 p-3 rounded-lg">
@@ -144,8 +143,8 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <div className="backdrop-blur-lg bg-white/5 py-8 pl-8 pr-8 pt-5 rounded-2xl shadow-xl mb-10 lg:mt-20">
-              <h2 className="text-4xl text-center font-bold pt-2 pb-3 mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            <div className="backdrop-blur-lg bg-white/5 pb-8 pt-5 pl-8 pr-8 rounded-xl shadow-3xl lg:mt-20 mb-20">
+              <h2 className="text-4xl text-center font-bold pb-5 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                 Send Message
               </h2>
               {/* Status Message */}
@@ -208,7 +207,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="flex justify-center pt-4">
+                <div className="flex justify-center">
                   <button
                     type="submit"
                     className="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity"
