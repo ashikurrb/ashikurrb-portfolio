@@ -102,7 +102,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-400">s19510007055@nu.ac.bd</p>
+                    <p className="text-gray-400">{import.meta.env.VITE_APP_EMAIL_ADDRESS}</p>
                   </div>
                 </div>
 
