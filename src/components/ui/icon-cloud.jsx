@@ -30,10 +30,12 @@ export const cloudProps = {
   },
 };
 
-export const renderCustomIcon = (icon, theme, imageArray) => {
+export const renderCustomIcon = (icon, theme, slug) => {
   const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
   const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
   const minContrastRatio = theme === "dark" ? 2 : 1.2;
+
+  const formattedSlug = slug.replace(/dotjs$/, ".js").replace(/-/g, " ");
 
   return renderSimpleIcon({
     icon,
@@ -46,9 +48,11 @@ export const renderCustomIcon = (icon, theme, imageArray) => {
       target: undefined,
       rel: undefined,
       onClick: (e) => e.preventDefault(),
+      title: formattedSlug, // ✅ Show slug (formatted) as tooltip
     },
   });
 };
+
 
 export default function IconCloud({
   // Default to an empty array if not provided
@@ -67,12 +71,13 @@ export default function IconCloud({
   }, [iconSlugs]);
 
   const renderedIcons = useMemo(() => {
-    if (!data) return null;
+  if (!data) return null;
 
-    return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme || "dark")
-    );
-  }, [data, theme]);
+  return iconSlugs.map((slug) => {
+    const icon = data.simpleIcons[slug];
+    return icon ? renderCustomIcon(icon, theme || "dark", slug) : null;
+  });
+}, [data, theme, iconSlugs]);
 
   return (
     // @ts-ignore
