@@ -1,6 +1,7 @@
 import React from "react";
 import { Github, ExternalLink } from "lucide-react";
-import studentportal from "../assets/images/student-portal-dashboard.png";
+import studentPortal from "../assets/images/student-portal-dashboard.png";
+import tulipPanda from "../assets/images/tulip-panda.png";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const MacOsButtons = () => (
@@ -14,6 +15,26 @@ const MacOsButtons = () => (
 const ProjectShowcase = () => {
   const projects = [
     {
+      title: "Tulip Panda - Online Food Delivery Service",
+      description:
+        "I built this web application Tulip Panda, an online food delivery service for the Tulip Garden Resturant which is owned by the LabAid's mother group MR Group of Companies.",
+      tags: [
+        "JavaScript",
+        "React",
+        "Bootstrap",
+        "Node.js",
+        "ExpressJS",
+        "MongoDB",
+        "Cloudinary",
+      ],
+      links: {
+        live: "https://tulippanda.mrg.com.bd/",
+        demo: "https://ecom-ashik.vercel.app/",
+      },
+      image: tulipPanda,
+      featured: true,
+    },
+    {
       title: "Student Management Portal",
       description:
         "I build this web application for 5points Academy to manage their students, classes, and instructors. It has a user-friendly interface and a powerful admin panel",
@@ -24,13 +45,15 @@ const ProjectShowcase = () => {
         "Node.js",
         "ExpressJS",
         "MongoDB",
+        "Cloudinary",
+        "Courier APP",
       ],
       links: {
         github: "https://github.com/ashikurrb/student-portal",
         live: "https://www.5points-academy.com/",
         demo: "https://5points-academy.netlify.app/",
       },
-      image: studentportal,
+      image: studentPortal,
       featured: true,
     },
   ];
@@ -102,7 +125,7 @@ const ProjectShowcase = () => {
                 target="_blank"
                 href={project.links.demo}
               >
-                Click for Demo | Demo Credentials: 01853660115:123456
+                Click for Demo
               </a>
               <CardContent className="mt-4">
                 <p className="text-slate-300 mb-6 text-lg leading-relaxed">
