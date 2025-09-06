@@ -1,12 +1,14 @@
 import React from "react";
-import { Code2, Activity, Cpu, Layers, Network, Binary } from "lucide-react";
+import aestheticEurasiaLogo from "../assets/images/aesthetic-eurasia.jpg";
+import fivePointsAcademyLogo from "../assets/images/5points-academy.jpg";
 
 const ExperienceCard = ({
   title,
   company,
+  url,
   period,
   description,
-  icon: Icon,
+  logo
 }) => (
   <div className="group relative overflow-hidden">
     {/* Hexagon background pattern */}
@@ -22,22 +24,26 @@ const ExperienceCard = ({
       {/* Icon with glow effect */}
       <div className="relative mb-4">
         <div className="absolute -inset-2 bg-blue-500 opacity-30 rounded-full blur-lg group-hover:opacity-70 transition-opacity" />
-        <Icon className="w-10 h-10 text-blue-400 relative z-10" />
+        <img src={logo} alt={`${title} logo`} className="w-20 h-15 text-blue-400 relative z-10 rounded-md" />
       </div>
 
       {/* Content */}
-      <div className="space-y-2">
-        <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-          {title}
-        </h3>
-        <div className="text-gray-400 flex justify-between items-center">
-          <span className="text-blue-400">{company}</span>
-          <span className="text-sm font-mono">{period}</span>
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        <div className="space-y-2">
+          <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+            {title}
+          </h3>
+          <div className="text-gray-400 flex justify-between items-center">
+            <span className="text-blue-400 font-bold text-lg">{company}</span>
+          </div>
+          <div className="text-gray-400 flex justify-between items-center">
+            <span className="text-sm font-mono">{period}</span>
+          </div>
+          <p className="text-gray-300 border-l-2 border-blue-500 pl-4 mt-4">
+            {description}
+          </p>
         </div>
-        <p className="text-gray-300 border-l-2 border-blue-500 pl-4 mt-4">
-          {description}
-        </p>
-      </div>
+      </a>
 
       {/* Animated corner accents */}
       <div className="absolute top-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -55,9 +61,19 @@ const ExperienceCard = ({
 const ExperienceSection = () => {
   const experiences = [
     {
-      icon: Code2,
+      logo: aestheticEurasiaLogo,
+      title: "IT Executive (Intern)",
+      company: "Aesthetic Eurasia Ltd",
+      url: "https://aestheticeurasia.com/",
+      period: "August 20, 2025 - Currently Working",
+      description:
+        "Overseeing IT, networking, and web development operations to support seamless workflow and digital solutions for Aesthetic Eurasia, a company that creates visuals",
+    },
+    {
+      logo: fivePointsAcademyLogo,
       title: "IT Management",
       company: "5points Academy",
+      url: "https://5points-academy.com/",
       period: "2024 - Present",
       description:
         "Contributed to developing their student management portal and enhancing internal system.",

@@ -59,7 +59,7 @@ export default function Hero() {
   const [code] = useState(`
     const profile = {
         name: 'Ashikur Rahman Bhuiyan',
-        title: 'Full-Stack Developer | Notion Enthusiast',
+        title: 'Full-Stack Developer | Notion Enthusiast | IT & Networking',
         skills: {
             frontEnd: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React.js', 'Next.js', 'Tailwind CSS'],
             backEnd: ['Node.js', 'Express.js', 'MongoDB', 'Redis', 'Firebase', 'RESTful APIs'],
