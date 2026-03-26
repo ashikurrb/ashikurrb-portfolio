@@ -10,14 +10,12 @@ import Projects from "./components/Projects";
 import { Route, Routes } from "react-router-dom";
 
 export default function App() {
-  const [isOnePage, setIsOnePage] = useState(false); // Toggle state
+  const [isOnePage, setIsOnePage] = useState(false);
 
   return (
     <>
       <Header />
-      {/* Conditional Rendering */}
       {isOnePage ? (
-        // One-Page Mode: Render all components together
         <>
           <Hero />
           <Skills />
@@ -26,7 +24,6 @@ export default function App() {
           <Contact />
         </>
       ) : (
-        // Router Mode: Use routes for navigation
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/skills" element={<Skills />} />

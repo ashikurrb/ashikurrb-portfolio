@@ -28,7 +28,7 @@ export const EvervaultCard = ({ text, className }) => {
     <div
       className={cn(
         "p-0.5  bg-transparent aspect-square  flex items-center justify-center w-full h-full relative",
-        className
+        className,
       )}
     >
       <div

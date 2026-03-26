@@ -48,14 +48,13 @@ export const renderCustomIcon = (icon, theme, slug) => {
       target: undefined,
       rel: undefined,
       onClick: (e) => e.preventDefault(),
-      title: formattedSlug, // ✅ Show slug (formatted) as tooltip
+      title: formattedSlug,
     },
   });
 };
 
 
 export default function IconCloud({
-  // Default to an empty array if not provided
   iconSlugs = [],
 
   imageArray,
@@ -65,7 +64,6 @@ export default function IconCloud({
 
   useEffect(() => {
     if (iconSlugs.length > 0) {
-      // Check if iconSlugs is not empty
       fetchSimpleIcons({ slugs: iconSlugs }).then(setData);
     }
   }, [iconSlugs]);
@@ -80,7 +78,6 @@ export default function IconCloud({
 }, [data, theme, iconSlugs]);
 
   return (
-    // @ts-ignore
     <Cloud {...cloudProps}>
       <>
         <>{renderedIcons}</>

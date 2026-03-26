@@ -4,9 +4,7 @@ const AnimatedGrid = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <div className="relative w-full h-full">
-        {/* Grid Container */}
         <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]">
-          {/* Horizontal Lines */}
           <div className="absolute inset-0 grid grid-cols-[repeat(40,1fr)] opacity-20">
             {[...Array(40)].map((_, i) => (
               <div
@@ -22,7 +20,6 @@ const AnimatedGrid = () => {
             ))}
           </div>
 
-          {/* Vertical Lines */}
           <div className="absolute inset-0 grid grid-rows-[repeat(40,1fr)] opacity-20">
             {[...Array(40)].map((_, i) => (
               <div

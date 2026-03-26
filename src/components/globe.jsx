@@ -12,6 +12,7 @@ const slugs = [
   "nextdotjs",
   "nodedotjs",
   "express",
+  "nestjs",
   "prisma",
   "postgresql",
   "mongodb",

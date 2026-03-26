@@ -2,29 +2,22 @@ import React from "react";
 import aestheticEurasiaLogo from "../assets/images/aesthetic-eurasia.jpg";
 import fivePointsAcademyLogo from "../assets/images/5points-academy.jpg";
 
-const ExperienceCard = ({
-  title,
-  company,
-  url,
-  period,
-  description,
-  logo
-}) => (
+const ExperienceCard = ({ title, company, url, period, description, logo }) => (
   <div className="group relative overflow-hidden">
-    {/* Hexagon background pattern */}
     <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGwyMCAxMGwtMjAgMTB6IiBmaWxsPSIjMkQ0MjU2IiBmaWxsLW9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==')] opacity-20" />
 
-    {/* Glowing border */}
     <div className="absolute -inset-[1px] bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-lg opacity-0 group-hover:opacity-100 blur transition-all duration-500" />
 
     <div className="relative bg-gray-900 rounded-lg p-6 h-full border border-gray-800 shadow-lg transform group-hover:scale-105 transition-all duration-500 ease-in-out">
-      {/* Neon line accent */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
-      {/* Icon with glow effect */}
       <div className="relative mb-4">
         <div className="absolute -inset-2 bg-blue-500 opacity-30 rounded-full blur-lg group-hover:opacity-70 transition-opacity" />
-        <img src={logo} alt={`${title} logo`} className="w-20 h-15 text-blue-400 relative z-10 rounded-md" />
+        <img
+          src={logo}
+          alt={`${title} logo`}
+          className="w-20 h-15 text-blue-400 relative z-10 rounded-md"
+        />
       </div>
 
       {/* Content */}

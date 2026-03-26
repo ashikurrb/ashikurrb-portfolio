@@ -5,16 +5,23 @@ import {
   FaBriefcase,
   FaGraduationCap,
   FaCode,
-  FaEnvelope, // Icon for Connect
+  FaEnvelope,
+  FaGripVertical,
+  FaGripHorizontal,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
+import { motion, useAnimation } from "framer-motion";
 
 export default function Header() {
   const location = useLocation();
+  const controls = useAnimation(); 
+
   const [activeLink, setActiveLink] = useState(() => {
-    // Initialize active link based on current path
-    const path = location.pathname.substring(1) || "home";
-    return path;
+    return location.pathname.substring(1) || "home";
+  });
+
+  const [dockPosition, setDockPosition] = useState(() => {
+    return typeof window !== "undefined" && window.innerWidth >= 768 ? "top" : "bottom";
   });
 
   const navLinks = [
@@ -26,7 +33,6 @@ export default function Header() {
       text: "Experience",
       path: "/experience",
     },
-
     {
       id: "education",
       icon: FaGraduationCap,
@@ -34,23 +40,81 @@ export default function Header() {
       path: "/education",
     },
     { id: "projects", icon: FaLaptopCode, text: "Projects", path: "/projects" },
-    { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact" }, // Added Connect
+    { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact" },
   ];
 
+  const handleDragEnd = async (event, info) => {
+    const { x, y } = info.point;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+
+    const distances = {
+      top: y,
+      bottom: h - y,
+      left: x,
+      right: w - x,
+    };
+
+    const closest = Object.keys(distances).reduce((a, b) =>
+      distances[a] < distances[b] ? a : b
+    );
+
+    setDockPosition(closest);
+
+    await controls.start({
+      x: 0,
+      y: 0,
+      transition: { type: "spring", stiffness: 300, damping: 25 }
+    });
+  };
+
+  const isVertical = dockPosition === "left" || dockPosition === "right";
+
+  // FIX: Swapped transform centering for auto-margin centering
+  // This physically centers the element without relying on CSS transforms
+  const positionClasses = {
+    top: "top-4 left-0 right-0 mx-auto w-fit",
+    bottom: "bottom-4 left-0 right-0 mx-auto w-fit",
+    left: "left-4 top-0 bottom-0 my-auto h-fit",
+    right: "right-4 top-0 bottom-0 my-auto h-fit",
+  };
+
   return (
-    <header className="fixed w-auto z-50 left-1/2 transform -translate-x-1/2 sm:top-3 sm:bottom-auto bottom-4 mt-3">
-      {" "}
-      <div className="p-[2px] rounded-full bg-gradient-to-r from-emerald-400 via-cyan-500 to-indigo-500 animate-gradient-x">
-        <nav className="bg-gray-900/90 backdrop-blur-md rounded-full px-6 py-2.5">
-          <div className="flex items-center gap-1 md:gap-2">
+    <motion.header
+      drag
+      dragMomentum={false}
+      animate={controls} 
+      layout 
+      onDragEnd={handleDragEnd}
+      // FIX: Removed the conflicting 'transform' class from here
+      className={`fixed z-50 ${positionClasses[dockPosition]}`}
+    >
+      <div className="p-[2px] rounded-full bg-gradient-to-r from-emerald-400 via-cyan-500 to-indigo-500 animate-gradient-x relative">
+        <nav className={`relative bg-gray-900/90 backdrop-blur-md rounded-full ${isVertical ? 'py-8 px-3' : 'px-6 py-2.5'}`}>
+          
+          <div 
+            className={`absolute flex items-center justify-center text-gray-400 cursor-grab active:cursor-grabbing hover:text-white transition-colors z-10
+              ${isVertical 
+                ? 'top-0 left-1/2 -translate-x-1/2 -translate-y-1/2' 
+                : 'left-0 top-1/2 -translate-y-1/2 -translate-x-1/2'
+              }
+            `}
+          >
+            <div className="bg-gray-900 rounded-full p-1 shadow-sm">
+              {isVertical ? <FaGripHorizontal className="text-xs" /> : <FaGripVertical className="text-xs" />}
+            </div>
+          </div>
+
+          <div className={`flex items-center ${isVertical ? 'flex-col gap-4' : 'gap-1 md:gap-2'}`}>
             {navLinks.map(({ id, icon: Icon, text, path }) => (
               <Link
                 key={id}
                 to={path}
                 onClick={() => setActiveLink(id)}
-                className={`px-3 py-1.5 rounded-full text-sm font-medium
-                  transition-all duration-300 flex items-center gap-2
+                className={`relative group rounded-full text-sm font-medium
+                  transition-all duration-300 flex items-center justify-center
                   hover:bg-white/10 
+                  ${isVertical ? 'p-3' : 'px-3 py-1.5 gap-2'}
                   ${
                     activeLink === id
                       ? "bg-white/15 text-white"
@@ -59,31 +123,47 @@ export default function Header() {
                 `}
               >
                 <Icon
-                  className={`text-base ${
-                    activeLink === id ? "scale-110" : ""
+                  className={`text-base transition-transform duration-200 ${
+                    activeLink === id ? "scale-110" : "group-hover:scale-110"
                   }`}
                 />
-                <span className="hidden md:inline">{text}</span>
+                
+                <span className={`${isVertical ? 'hidden' : 'hidden md:inline'}`}>
+                  {text}
+                </span>
+
+                {isVertical && (
+                  <span
+                    className={`absolute top-1/2 -translate-y-1/2 whitespace-nowrap px-2.5 py-1.5 rounded-md bg-gray-800 text-white text-xs font-semibold shadow-xl
+                      opacity-0 pointer-events-none transition-all duration-200 ease-out z-50
+                      ${dockPosition === 'left' ? 'left-full ml-4 -translate-x-2 group-hover:translate-x-0' : ''}
+                      ${dockPosition === 'right' ? 'right-full mr-4 translate-x-2 group-hover:translate-x-0' : ''}
+                      group-hover:opacity-100
+                    `}
+                  >
+                    {text}
+                  </span>
+                )}
               </Link>
             ))}
           </div>
         </nav>
       </div>
       <style>{`
-  @keyframes gradient-x {
-    0%,
-    100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-  .animate-gradient-x {
-    animation: gradient-x 3s linear infinite;
-    background-size: 200% 200%;
-  }
-`}</style>
-    </header>
+        @keyframes gradient-x {
+          0%,
+          100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+        .animate-gradient-x {
+          animation: gradient-x 3s linear infinite;
+          background-size: 200% 200%;
+        }
+      `}</style>
+    </motion.header>
   );
 }

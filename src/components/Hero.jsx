@@ -61,9 +61,9 @@ export default function Hero() {
         name: 'Ashikur Rahman Bhuiyan',
         title: 'Full-Stack Developer | Notion Enthusiast | IT & Networking',
         skills: {
-            frontEnd: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React.js', 'Next.js', 'Tailwind CSS'],
-            backEnd: ['Node.js', 'Express.js', 'MongoDB', 'Redis', 'Firebase', 'RESTful APIs'],
-            tools: ['Git', 'GitHub', 'Linux', 'Docker', 'Figma', 'Notion', 'Slack'],
+            frontEnd: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React.js', 'Next.js', 'Tailwind CSS', "Framer Motion","GASP", "ShadCN UI"],
+            backEnd: ['Node.js', 'Express.js','NestJS', 'MongoDB','mongoose', 'Redis', 'PostgreSQL','Prisma', 'RESTful APIs'],
+            tools: ['Git', 'GitHub','Postman', 'Linux', 'Docker', 'Figma', 'Notion', 'Slack'],
         },
         hardWorker: true,
         quickLearner: true,
@@ -89,7 +89,7 @@ export default function Hero() {
           </div>
 
           {/* Main content container */}
-          <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10 py-12 lg:py-0">
+          <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10">
             {/* Left column - Text content */}
             <div className="w-full lg:w-1/2 mb-12 lg:mb-0 animate__animated animate__fadeInLeft relative">
               {/* Decorative blurs */}
@@ -202,7 +202,7 @@ export default function Hero() {
                       developer.js
                     </span>
                   </div>
-                  <pre className="language-javascript overflow-auto break-words">
+                  <pre className="language-javascript">
                     <code className="language-javascript text-wrap">
                       {code}
                     </code>

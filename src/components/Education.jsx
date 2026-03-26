@@ -9,10 +9,11 @@ const EducationSection = () => {
     {
       degree: "BBA in Tourism and Hospitaltiy Management",
       school: "Mohammadpur Kendriya College",
-      year: "2020 - Present",
+      year: "2020 - 2026",
       mascot: "🎓",
       type: "Bachelor Degree",
-      achievements: [""],
+      achievements: ["CGPA 3.52"],
+      status: "Completed",
     },
     {
       degree: "SSC in Science",
@@ -21,6 +22,7 @@ const EducationSection = () => {
       mascot: "🎓",
       type: "Secondary School",
       achievements: ["GPA 5.00"],
+      status: "Completed",
     },
   ];
 
@@ -51,9 +53,7 @@ const EducationSection = () => {
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Main card content */}
               <div className="relative rounded-lg bg-[#0f1629] p-8 transition-all duration-300 hover:bg-[#1a243a]">
-                {/* macOS-like window controls on the left */}
                 <div className="flex justify-start gap-2 absolute top-3 left-3">
                   <button className="w-2.5 h-2.5 bg-red-500 rounded-full transition-all hover:bg-red-600" />
                   <button className="w-2.5 h-2.5 bg-yellow-400 rounded-full transition-all hover:bg-yellow-500" />
@@ -64,7 +64,6 @@ const EducationSection = () => {
                   {edu.type}
                 </div>
 
-                {/* Top section */}
                 <div className="flex items-start justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center gap-3">
@@ -79,12 +78,11 @@ const EducationSection = () => {
                     </p>
                     <p className="text-slate-500 flex items-center gap-2">
                       <Calendar className="w-4 h-4" />
-                      {edu.year}
+                      {edu.year} ({edu.status})
                     </p>
                   </div>
                 </div>
 
-                {/* Achievements */}
                 <div className="mt-6">
                   <div className="flex flex-wrap gap-2">
                     {edu.achievements.map((achievement, i) => (

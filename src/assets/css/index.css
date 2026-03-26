@@ -208,13 +208,12 @@ pre[class*="language-"] {
     @apply bg-background text-foreground;
   }
 }
-/* Add these classes to adjust the grid colors in the top-left and bottom-right */
 .top-left-grid {
   background-color: white;
-  opacity: 0.8; /* Make it more visible */
+  opacity: 0.8;
 }
 
 .bottom-right-grid {
   background-color: white;
-  opacity: 0.8; /* Make it more visible */
+  opacity: 0.8; 
 }
