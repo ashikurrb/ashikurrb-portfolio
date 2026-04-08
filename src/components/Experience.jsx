@@ -1,5 +1,5 @@
 import React from "react";
-import aestheticEurasiaLogo from "../assets/images/aesthetic-eurasia.jpg";
+import webbriksLogo from "https://webbriks.com/assets/images/home/web-briks-logo.svg";
 import fivePointsAcademyLogo from "../assets/images/5points-academy.jpg";
 
 const ExperienceCard = ({ title, company, url, period, description, logo }) => (
@@ -54,13 +54,13 @@ const ExperienceCard = ({ title, company, url, period, description, logo }) => (
 const ExperienceSection = () => {
   const experiences = [
     {
-      logo: aestheticEurasiaLogo,
-      title: "IT Executive (Intern)",
-      company: "Aesthetic Eurasia Ltd",
-      url: "https://aestheticeurasia.com/",
+      logo: webbriksLogo,
+      title: "Front-End Developer",
+      company: "Web Briks LLC",
+      url: "https://webbriks.com/team",
       period: "August 20, 2025 - Currently Working",
       description:
-        "Overseeing IT, networking, and web development operations to support seamless workflow and digital solutions for Aesthetic Eurasia, a company that creates visuals",
+        "Joined the company as a Front-End Developer, while also contributing to full-stack development and handling deployments for live production projects",
     },
     {
       logo: fivePointsAcademyLogo,
