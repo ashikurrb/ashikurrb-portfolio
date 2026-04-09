@@ -1,3 +1,6 @@
+import WebBriksLogo from "../assets/images/WebBriks-sq.jpg";
+import FivePointsLogo from "../assets/images/5points-academy.jpg";
+
 const ExperienceCard = ({ title, company, url, period, description, logo }) => (
   <div className="group relative overflow-hidden">
     <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGwyMCAxMGwtMjAgMTB6IiBmaWxsPSIjMkQ0MjU2IiBmaWxsLW9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==')] opacity-20" />
@@ -50,7 +53,7 @@ const ExperienceCard = ({ title, company, url, period, description, logo }) => (
 const ExperienceSection = () => {
   const experiences = [
     {
-      logo: "/src/assets/images/WebBriks-sq.jpg",
+      logo: WebBriksLogo,
       title: "Front-End Developer",
       company: "Web Briks LLC",
       url: "https://webbriks.com/team",
@@ -59,7 +62,7 @@ const ExperienceSection = () => {
         "Joined the company as a Front-End Developer, while also contributing to full-stack development and handling deployments for live production projects",
     },
     {
-      logo: "/src/assets/images/5points-academy.jpg",
+      logo: FivePointsLogo,
       title: "System Developer & IT",
       company: "5points Academy",
       url: "https://5points-academy.com/",
