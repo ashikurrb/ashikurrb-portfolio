@@ -1,13 +1,10 @@
-import React from "react";
 import {
-  Briefcase,
   Calendar,
   ArrowUpRight,
   CheckCircle2,
-  ShieldCheck,
 } from "lucide-react";
 import WebBriksLogo from "../assets/images/wb-icon.png";
-import FivePointsLogo from "../assets/images/5points-academy.jpg";
+import FivePointsLogo from "../assets/images/5points.png";
 
 const ExperienceCard = ({
   title,
@@ -26,7 +23,7 @@ const ExperienceCard = ({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800/60">
         <div className="flex items-center gap-4">
           <div className="relative shrink-0">
-            <div className="w-14 h-14 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center p-2 overflow-hidden shadow-md">
+            <div className="w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden shadow-md">
               <img
                 src={logo}
                 alt={`${company} logo`}
