@@ -1,51 +1,97 @@
-import WebBriksLogo from "../assets/images/WebBriks-sq.jpg";
+import React from "react";
+import {
+  Briefcase,
+  Calendar,
+  ArrowUpRight,
+  CheckCircle2,
+  ShieldCheck,
+} from "lucide-react";
+import WebBriksLogo from "../assets/images/wb-icon.png";
 import FivePointsLogo from "../assets/images/5points-academy.jpg";
 
-const ExperienceCard = ({ title, company, url, period, description, logo }) => (
-  <div className="group relative overflow-hidden">
-    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGwyMCAxMGwtMjAgMTB6IiBmaWxsPSIjMkQ0MjU2IiBmaWxsLW9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==')] opacity-20" />
-
-    <div className="absolute -inset-[1px] bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-lg opacity-0 group-hover:opacity-100 blur transition-all duration-500" />
-
-    <div className="relative bg-gray-900 rounded-lg p-6 h-full border border-gray-800 shadow-lg transform group-hover:scale-105 transition-all duration-500 ease-in-out">
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-
-      <div className="relative mb-4">
-        <div className="absolute -inset-2 bg-blue-500 opacity-30 rounded-full blur-lg group-hover:opacity-70 transition-opacity" />
-        <img
-          src={logo}
-          alt={`${title} logo`}
-          className="w-20 h-15 text-blue-400 relative z-10 rounded-md"
-        />
-      </div>
-
-      {/* Content */}
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        <div className="space-y-2">
-          <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-            {title}
-          </h3>
-          <div className="text-gray-400 flex justify-between items-center">
-            <span className="text-blue-400 font-bold text-lg">{company}</span>
+const ExperienceCard = ({
+  title,
+  company,
+  url,
+  period,
+  description,
+  logo,
+  status,
+  roleType,
+  techStack,
+}) => (
+  <div className="relative group rounded-2xl bg-gradient-to-r from-slate-900/90 via-slate-900/60 to-slate-950/90 border border-slate-800/80 hover:border-slate-700/90 p-6 md:p-8 backdrop-blur-md transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/5 flex flex-col justify-between">
+    <div>
+      {/* Top Header Row */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800/60">
+        <div className="flex items-center gap-4">
+          <div className="relative shrink-0">
+            <div className="w-14 h-14 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center p-2 overflow-hidden shadow-md">
+              <img
+                src={logo}
+                alt={`${company} logo`}
+                className="w-full h-full object-contain"
+              />
+            </div>
           </div>
-          <div className="text-gray-400 flex justify-between items-center">
-            <span className="text-sm font-mono">{period}</span>
+          <div>
+            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-cyan-400">
+              {roleType}
+            </span>
+            <h3 className="text-xl md:text-2xl font-bold text-slate-100 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-indigo-300 group-hover:to-cyan-300 group-hover:bg-clip-text transition-all">
+              {title}
+            </h3>
+            <span className="text-slate-400 font-medium text-sm">
+              {company}
+            </span>
           </div>
-          <p className="text-gray-300 border-l-2 border-blue-500 pl-4 mt-4">
-            {description}
-          </p>
         </div>
-      </a>
 
-      {/* Animated corner accents */}
-      <div className="absolute top-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <div className="absolute top-0 right-0 w-4 h-[2px] bg-cyan-500" />
-        <div className="absolute top-0 right-0 w-[2px] h-4 bg-cyan-500" />
+        {/* Date and Status Pill */}
+        <div className="flex flex-wrap sm:flex-col sm:items-end gap-2">
+          <span className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-300 bg-slate-800/70 border border-slate-700/60 px-3 py-1 rounded-md">
+            <Calendar size={13} className="text-purple-400" />
+            {period}
+          </span>
+          <span className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-400 bg-emerald-950/50 border border-emerald-800/40 px-2.5 py-0.5 rounded-full">
+            <CheckCircle2 size={11} />
+            {status}
+          </span>
+        </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <div className="absolute bottom-0 left-0 w-4 h-[2px] bg-purple-500" />
-        <div className="absolute bottom-0 left-0 w-[2px] h-4 bg-purple-500" />
+
+      {/* Description */}
+      <p className="mt-5 text-slate-400 text-sm md:text-base leading-relaxed">
+        {description}
+      </p>
+
+      {/* Core Competencies Tags */}
+      <div className="mt-5 flex flex-wrap items-center gap-2">
+        {techStack.map((tech, i) => (
+          <span
+            key={i}
+            className="text-xs font-mono text-slate-300 bg-slate-950/60 border border-slate-800 px-2.5 py-1 rounded-md"
+          >
+            {tech}
+          </span>
+        ))}
       </div>
+    </div>
+
+    {/* Live Profile Link */}
+    <div className="mt-6 pt-5 border-t border-slate-800/50 flex justify-end">
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cursor-pointer inline-flex items-center gap-1.5 text-xs font-mono font-medium text-cyan-400 hover:text-cyan-300 transition-colors group/link"
+      >
+        <span>Company Reference</span>
+        <ArrowUpRight
+          size={14}
+          className="transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+        />
+      </a>
     </div>
   </div>
 );
@@ -54,59 +100,65 @@ const ExperienceSection = () => {
   const experiences = [
     {
       logo: WebBriksLogo,
-      title: "Front-End Developer",
+      title: "Full Stack Developer",
       company: "Web Briks LLC",
-      url: "https://webbriks.com/team",
-      period: "August 20, 2025 - Currently Working",
+      url: "https://webbriks.com/teams",
+      period: "Aug 20, 2025 - Present",
+      roleType: "Full-Time / Core Team",
+      status: "Currently Working",
       description:
-        "Joined the company as a Front-End Developer, while also contributing to full-stack development and handling deployments for live production projects",
+        "Engineered end-to-end full-stack web applications, maintained production deployments, optimized API response performance, and collaborated with cross-functional teams to deliver client-facing scalable software solutions.",
+      techStack: [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "PostgreSQL",
+        "Cloud Deployment",
+      ],
     },
     {
       logo: FivePointsLogo,
       title: "System Developer & IT",
       company: "5points Academy",
-      url: "https://5points-academy.com/",
+      url: "https://beta.5points-academy.com/",
       period: "2024 - Present",
+      roleType: "System Development & IT Support",
+      status: "Active Contributor",
       description:
-        "Developed and maintained the student management portal while overseeing IT systems and providing ongoing technical support on an as-needed basis.",
+        "Architected and maintained the student management portal system, managed backend database integrity, and provided proactive IT infrastructure support and technical resolution on an ongoing basis.",
+      techStack: [
+        "Portal Architecture",
+        "Database Management",
+        "System Admin",
+        "API Support",
+      ],
     },
   ];
 
   return (
-    <>
-      <div className="min-h-screen bg-gray-900 relative overflow-hidden">
-        {/* Animated background grid */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMkQ0MjU2IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-10" />
-
-        {/* Content container */}
-        <div className="relative container mx-auto px-4 py-24">
-          {/* Section header with cyber effect */}
-          <div className="flex flex-col items-center space-y-6 mb-16">
-            <div className="relative">
-              <h2 className="text-4xl md:text-6xl font-extrabold text-transparent bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-500 bg-clip-text lg:pt-10">
-                Professional Journey
-              </h2>
-              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-400/30 to-indigo-400/30 blur-xl rounded-xl" />
-            </div>
-            <p className="text-sm md:text-lg text-gray-400 font-medium italic tracking-wide">
-              "Crafting stories, one milestone at a time..."
-            </p>
-            <div className="animate-pulse mt-4 w-6 h-6 border-4 border-dashed border-cyan-400 rounded-full" />
-          </div>
-
-          {/* Experience grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto relative">
-            {experiences.map((exp, index) => (
-              <ExperienceCard key={index} {...exp} />
-            ))}
-          </div>
+    <section className="min-h-screen bg-[#0f1629] text-slate-100 py-16 px-4 sm:px-6 lg:px-8">
+      {/* Header Section */}
+      <div className="max-w-4xl mx-auto text-center space-y-4 my-16">
+        <div className="relative inline-block">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 bg-clip-text">
+            Professional Journey
+          </h2>
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-500/20 to-indigo-500/20 blur-2xl rounded-full" />
         </div>
 
-        {/* Glowing orbs background effect */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/20 rounded-full filter blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl animate-pulse delay-700" />
+        <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto italic font-medium">
+          "Crafting stories, one milestone at a time..."
+        </p>
       </div>
-    </>
+
+      {/* Experience Cards Stack */}
+      <div className="max-w-4xl mx-auto space-y-6">
+        {experiences.map((exp, index) => (
+          <ExperienceCard key={index} {...exp} />
+        ))}
+      </div>
+    </section>
   );
 };
 

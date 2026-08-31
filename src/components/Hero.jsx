@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/components/prism-javascript";
 import "../assets/css/tomorrow.css";
@@ -7,7 +7,6 @@ import PortfolioPage from "./PortfolioPage";
 import SparklesText from "./ui/sparkles-text";
 import { FlipWords } from "./ui/flip-words";
 import { FaGithub, FaGoogleDrive } from "react-icons/fa";
-import { SiNotion } from "react-icons/si";
 
 // AnimatedGrid Component
 const AnimatedGrid = () => {

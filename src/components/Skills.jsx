@@ -107,9 +107,19 @@ const SkillsSection = () => {
   return (
     <main className="lg:pt-0 bg-[#0f1629] text-white min-h-screen">
       <section className="container mx-auto px-4 py-16">
-        <h2 className="text-center lg:pt-10 text-4xl md:text-6xl font-extrabold text-transparent bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-500 bg-clip-text">
-          Building Blocks
-        </h2>
+        <div className="max-w-4xl mx-auto text-center space-y-4 mt-16">
+          <div className="relative inline-block">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 bg-clip-text">
+              Building Blocks
+            </h2>
+            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-500/20 to-indigo-500/20 blur-2xl rounded-full" />
+          </div>
+
+          <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto italic font-medium">
+            &quot;Technologies that empower my craft, shaping the digital experiences
+            I create...&quot;
+          </p>
+        </div>
         <div className="flex justify-center items-center">
           <IconCloudDemo />
         </div>

@@ -1,7 +1,24 @@
 import React, { useState } from "react";
-import { Send, MapPin, Mail } from "lucide-react";
+import {
+  Send,
+  MapPin,
+  Mail,
+  MessageSquare,
+  CheckCircle2,
+  AlertCircle,
+  Sparkles,
+} from "lucide-react";
 import { SiNotion } from "react-icons/si";
 import { FaXTwitter, FaLinkedin, FaFacebook, FaGithub } from "react-icons/fa6";
+import { Card, CardContent } from "@/components/ui/card";
+
+const MacOsButtons = () => (
+  <div className="flex items-center gap-1.5">
+    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+  </div>
+);
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,9 +29,11 @@ export default function Contact() {
   });
 
   const [status, setStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     const form = new FormData();
     form.append("access_key", import.meta.env.VITE_APP_WEB3FORM_ACCESS_KEY);
@@ -32,7 +51,7 @@ export default function Contact() {
       const result = await response.json();
 
       if (response.ok) {
-        setStatus("Message sent successfully!");
+        setStatus({ type: "success", message: "Message sent successfully!" });
         setFormData({
           name: "",
           email: "",
@@ -40,94 +59,134 @@ export default function Contact() {
           message: "",
         });
       } else {
-        setStatus(result.message || "There was an error sending your message.");
+        setStatus({
+          type: "error",
+          message: result.message || "There was an error sending your message.",
+        });
       }
 
       setTimeout(() => {
         setStatus(null);
       }, 5000);
     } catch (error) {
-      setStatus("An error occurred. Please try again.");
+      setStatus({
+        type: "error",
+        message: "An error occurred. Please try again.",
+      });
       setTimeout(() => {
         setStatus(null);
       }, 10000);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const socialProfile = [
     {
       appName: "Notion",
-      icon: <SiNotion />,
+      icon: <SiNotion size={18} />,
       link: "https://ashikurrb.notion.site/portfolio",
     },
     {
-      appName: "Facebook",
-      icon: <FaFacebook />,
-      link: "https://www.facebook.com/ashikurrb.ashik",
-    },
-    {
-      appName: "X",
-      icon: <FaXTwitter />,
-      link: "https://www.x.com/ashikurrb",
-    },
-    {
       appName: "LinkedIn",
-      icon: <FaLinkedin />,
+      icon: <FaLinkedin size={18} />,
       link: "https://www.linkedin.com/in/ashikurrb",
     },
     {
       appName: "GitHub",
-      icon: <FaGithub />,
+      icon: <FaGithub size={18} />,
       link: "https://www.github.com/ashikurrb",
+    },
+    {
+      appName: "X",
+      icon: <FaXTwitter size={18} />,
+      link: "https://www.x.com/ashikurrb",
+    },
+    {
+      appName: "Facebook",
+      icon: <FaFacebook size={18} />,
+      link: "https://www.facebook.com/ashikurrb.ashik",
     },
   ];
 
   return (
-    <main className="min-h-screen bg-[#0f1629] text-white py-16 px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-      <div className="container mx-auto max-w-360">
-        <h2 className="my-12 text-center text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-500 bg-clip-text">
-          Get in Touch
-        </h2>
+    <main className="min-h-screen bg-[#0f1629] text-slate-100 py-16 px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+      {/* Section Header */}
+      <div className="max-w-4xl mx-auto text-center space-y-4 my-16">
+        <div className="relative inline-block">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 bg-clip-text">
+            Get in Touch
+          </h2>
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-500/20 to-indigo-500/20 blur-2xl rounded-full" />
+        </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start pb-10">
-          <div className="space-y-10 flex flex-col justify-center h-full">
-            <p className="text-gray-300 text-lg md:text-xl">
-              Have a question or want to work together? Drop us a message!
+        <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto font-medium">
+          Have an opportunity, production inquiry, or system project? Let’s
+          talk.
+        </p>
+      </div>
+
+      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Contact Info Card */}
+        <div className="lg:col-span-5 space-y-6">
+          <div className="rounded-2xl bg-gradient-to-r from-slate-900/90 via-slate-900/60 to-slate-950/90 border border-slate-800/80 p-6 md:p-8 backdrop-blur-md">
+            <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase tracking-wider mb-2">
+              <Sparkles size={14} /> Quick Availability
+            </div>
+            <h3 className="text-2xl font-bold text-slate-100">
+              Let's Build Something Scalable
+            </h3>
+            <p className="text-slate-400 text-sm mt-3 leading-relaxed">
+              Available for full-time roles, full-stack architectural contracts,
+              and enterprise platform engineering.
             </p>
 
-            <div className="space-y-8">
-              <div className="flex items-center space-x-4">
-                <div className="bg-purple-500/10 p-4 rounded-lg flex-shrink-0">
-                  <Mail className="w-6 h-6 text-purple-400" />
+            <div className="mt-8 space-y-4">
+              <div className="flex items-center gap-4 p-3.5 rounded-xl bg-slate-950/60 border border-slate-800">
+                <div className="p-3 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 shrink-0">
+                  <Mail size={18} />
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold">Email</h3>
-                  <p className="text-gray-400 break-all">
-                    {import.meta.env.VITE_APP_EMAIL_ADDRESS || "hello@example.com"}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4">
-                <div className="bg-pink-500/10 p-4 rounded-lg flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-pink-400" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold">Location</h3>
-                  <p className="text-gray-400">
-                    Dhaka Housing, Adabor, Mohammadpur, Dhaka-1207
-                  </p>
+                <div className="overflow-hidden">
+                  <div className="text-xs font-mono text-slate-400 uppercase">
+                    Direct Email
+                  </div>
+                  <a
+                    href={`mailto:${import.meta.env.VITE_APP_EMAIL_ADDRESS}`}
+                    className="cursor-pointer text-sm md:text-base font-semibold text-slate-200 hover:text-cyan-400 transition-colors truncate block"
+                  >
+                    {import.meta.env.VITE_APP_EMAIL_ADDRESS}
+                  </a>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-4 pt-2">
+              <div className="flex items-center gap-4 p-3.5 rounded-xl bg-slate-950/60 border border-slate-800">
+                <div className="p-3 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 shrink-0">
+                  <MapPin size={18} />
+                </div>
+                <div>
+                  <div className="text-xs font-mono text-slate-400 uppercase">
+                    Location
+                  </div>
+                  <p className="text-sm font-semibold text-slate-200">
+                    Mohammadpur, Dhaka-1207, Bangladesh
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Social Grid */}
+            <div className="mt-8 pt-6 border-t border-slate-800/80">
+              <div className="text-xs font-mono text-slate-400 uppercase mb-3">
+                Verified Channels
+              </div>
+              <div className="flex flex-wrap gap-2.5">
                 {socialProfile.map((profile, index) => (
                   <a
                     key={index}
                     href={profile.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-pink-500/10 p-3.5 rounded-lg hover:bg-pink-500/20 transition-colors flex items-center justify-center text-xl text-pink-400"
+                    className="cursor-pointer p-3 rounded-xl bg-slate-950/60 border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all duration-300 transform hover:-translate-y-0.5"
                     aria-label={profile.appName}
                   >
                     {profile.icon}
@@ -136,73 +195,119 @@ export default function Contact() {
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="backdrop-blur-lg bg-white/5 p-8 sm:p-10 rounded-2xl shadow-2xl border border-white/5 w-full max-w-xl mx-auto lg:mx-0">
-            <h3 className="text-3xl text-center font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              Send Message
-            </h3>
-
-            {status && (
-              <div className="mb-6 text-center text-sm font-medium text-gray-200 bg-white/10 py-3 px-4 rounded-lg">
-                {status}
+        {/* Message Form Window */}
+        <div className="lg:col-span-7">
+          <div className="rounded-2xl p-[1px] bg-gradient-to-b from-slate-700/50 via-slate-800/20 to-transparent">
+            <Card className="w-full bg-slate-900/95 border-slate-800 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-sm">
+              <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-800/80 bg-slate-950/60">
+                <MacOsButtons />
+                <div className="text-slate-500 text-xs font-mono">
+                  dispatch_message.ts
+                </div>
               </div>
-            )}
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <input
-                required
-                type="text"
-                placeholder="Your Name"
-                className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-gray-700/50 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-              />
+              <CardContent className="p-6 md:p-8">
+                {status && (
+                  <div
+                    className={`mb-6 p-4 rounded-xl flex items-center gap-3 text-sm font-medium border ${
+                      status.type === "success"
+                        ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
+                        : "bg-red-500/10 border-red-500/30 text-red-400"
+                    }`}
+                  >
+                    {status.type === "success" ? (
+                      <CheckCircle2 size={18} className="shrink-0" />
+                    ) : (
+                      <AlertCircle size={18} className="shrink-0" />
+                    )}
+                    <span>{status.message}</span>
+                  </div>
+                )}
 
-              <input
-                required
-                type="email"
-                placeholder="Your Email"
-                className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-gray-700/50 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
-              />
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-mono text-slate-400 uppercase">
+                        Full Name
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        placeholder="John Doe"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 text-slate-100 placeholder-slate-600 outline-none text-sm transition-all"
+                        value={formData.name}
+                        onChange={(e) =>
+                          setFormData({ ...formData, name: e.target.value })
+                        }
+                      />
+                    </div>
 
-              <input
-                required
-                type="text"
-                placeholder="Subject"
-                className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-gray-700/50 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all"
-                value={formData.subject}
-                onChange={(e) =>
-                  setFormData({ ...formData, subject: e.target.value })
-                }
-              />
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-mono text-slate-400 uppercase">
+                        Email Address
+                      </label>
+                      <input
+                        required
+                        type="email"
+                        placeholder="john@example.com"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 text-slate-100 placeholder-slate-600 outline-none text-sm transition-all"
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
 
-              <textarea
-                required
-                placeholder="Your Message"
-                rows="5"
-                className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-gray-700/50 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all resize-none"
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
-              />
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono text-slate-400 uppercase">
+                      Subject
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      placeholder="Project Inquiry / Job Opportunity"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 text-slate-100 placeholder-slate-600 outline-none text-sm transition-all"
+                      value={formData.subject}
+                      onChange={(e) =>
+                        setFormData({ ...formData, subject: e.target.value })
+                      }
+                    />
+                  </div>
 
-              <div className="flex justify-center pt-2">
-                <button
-                  type="submit"
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3.5 px-8 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity"
-                >
-                  <span>Send Message</span>
-                  <Send className="w-5 h-5" />
-                </button>
-              </div>
-            </form>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono text-slate-400 uppercase">
+                      Message
+                    </label>
+                    <textarea
+                      required
+                      placeholder="Briefly describe your requirements or message..."
+                      rows="4"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 text-slate-100 placeholder-slate-600 outline-none text-sm transition-all resize-none"
+                      value={formData.message}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="cursor-pointer w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-400 to-cyan-500 hover:from-emerald-300 hover:to-cyan-400 text-slate-950 font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/10 transition-all transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <span>
+                      {isSubmitting
+                        ? "Sending Transmission..."
+                        : "Send Message"}
+                    </span>
+                    <Send size={16} />
+                  </button>
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
